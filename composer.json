@@ -1,0 +1,21 @@
+{
+    "name": "c-design/array-to-string",
+    "description": "PHP Class to convert array to string",
+    "type": "library",
+    "keywords": ["array to string", "array helper", "convert array"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chek",
+            "email": "dev@c-design.pro"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "CDesign\\ArrayToString": "src"
+        }
+    }
+}
