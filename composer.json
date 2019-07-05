@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CDesign\\ArrayToString": "src"
+            "CDesign\\ArrayToString\\": "src"
         }
     }
 }
