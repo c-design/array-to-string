@@ -9,6 +9,8 @@ class Converter
 {
     protected static $depth = 0;
     protected static $ident;
+    protected static $openTag = 'array(';
+    protected static $closeTag = ')';
 
     /**
      * @param array  $data
@@ -23,13 +25,13 @@ class Converter
         self::$depth = 0;
         self::$ident = $inline ? false : $indent;
 
-        if (!$shortSyntax) {
-            $result = var_export($data, true);
-        } else {
-            $result = static::renderArray($data);
+        if ($shortSyntax) {
+            self::$openTag = '[';
+            self::$closeTag = ']';
         }
 
-        return $inline ? preg_replace("/[\n\r]/", '', $result) : $result;
+        $str = static::renderArray($data);
+        return $inline ? preg_replace("/[\n\r]/", '', $str) : $str;
     }
 
     /**
@@ -55,7 +57,7 @@ class Converter
 
         self::$depth--;
 
-        return '[' . PHP_EOL . $result . PHP_EOL . self::renderIndent(self::$depth + 1) . ']';
+        return self::$openTag . PHP_EOL . $result . PHP_EOL . self::renderIndent(self::$depth + 1) . self::$closeTag;
     }
 
     /**
@@ -112,5 +114,4 @@ class Converter
 
         throw new InvalidArgumentException(sprintf('Object %s can\'t be converted', get_class($object)));
     }
-
 }
