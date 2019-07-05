@@ -1,4 +1,4 @@
-#PHP Class to convert array to string
+# PHP Class to convert array to string
 
 Why is it needed
 ---
@@ -10,13 +10,14 @@ Situation
 
 You have an array:
 ````php
+<?php
     $arrayVar = [
-        'a' => 1
+        'a' => 1,
         'b' => [
             'var1',
             'var2'
         ]
-    ]
+    ];
 ````
 
 You need a data file config.php with:
@@ -44,4 +45,3 @@ Additional arguments:
     indent - tab symbol or space (default Tab symbol)
     inline - place data at one line (default false)
     shortSyntax - use `[` and `]` instead  `array(` and `)` (default true)
-  
